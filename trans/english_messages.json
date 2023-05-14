@@ -1,0 +1,22 @@
+{
+  "start": "I'm SortingBot!\nCreated to organise your messages.\nChoose language:\n\n/en /ua\n(Default is English)\n\nThen use /info to get more information.",
+  "en": "Language is default - English : )\n/info",
+  "info": "To add a group to the list of managed groups, simply use the following command:\n\n[add group new-tag https://t.me/+group-id] --> /how_to_add_group\n\nMake sure to include the group's invite link and come up with a relevant and memorable group tag. You'll need this tag to reference the group later.\n\nDeleting a group from the list is just as easy:\n\n[delete group group-tag] --> /how_to_delete_group\n\nOnce you've added all the groups you want to manage, you can start sending messages to them using the bot. To do this, use the following command:\n\n[/run_managing]\n\nThis will enable the bot to automatically forward any messages you send to the groups you've added. Remember to include the group tag when sending your messages!\n\nWith these simple commands, you can easily manage multiple groups at once and streamline your communication efforts.",
+
+  "how-to-add-group": "How to add group message",
+  "how-to-delete-group": "How to delete group message",
+
+  "add-group-successful": "Group added successfully! :)",
+  "add-group-denied": "Group have not been added. :(",
+
+  "delete-group-successful": "Group deleted successfully! :)",
+  "delete-group-denied": "Group have not been deleted. :(",
+
+  "run-managing-successful": "Managing of defined groups is started! :)",
+  "run-managing-denied": "Managing of defined groups have not been started! :(",
+
+  "stop-managing": "Managing of defined groups is stopped!",
+
+  "all-groups": "Your groups is:\n\n",
+  "no-groups-added": "You have not added groups.\\n Add groups to start managing firstly.\\n\\n/how_to_add_group"
+}
