@@ -2,6 +2,7 @@ from aiogram import types
 from src.bot import bot
 from db.database import database
 from src.validator import validator
+from trans.message_parser import message_parser
 
 
 class MessageHandler:
@@ -18,7 +19,6 @@ class MessageHandler:
                 Parameters:
                     message: types.Message
     """
-
     @staticmethod
     async def handle_group_to_add_message(message: types.Message):
         database.set_data_base_connection()
@@ -27,17 +27,15 @@ class MessageHandler:
 
         for tag in user_group_tags:
             if validator.tag_in_message(tag, message.text):
-                pass
-                # resend message to some group
+                group_id = database.get_group_id(tag, message.from_user['id'])
+                await bot.send_message(chat_id=group_id, text=message.text)
+                await message.reply(message_parser.message(validator.get_user_lang(message),
+                                                           'message-resend-successful'))
+                return
 
-        # else statement
-        # write why not resend message
-        # looking for "some tag in message":
-        # if tag of predefined group is in message text:
-        # resending to added group
-        # else: ask for group tag in c
-        # there message should be parsed if it's possible and written to database
-        await bot.bot_instance.send_message(chat_id=message.chat.id, text=f'You said: {message.text}')
+        await bot.bot_instance.send_message(
+            chat_id=message.chat.id, text=message_parser.message(validator.get_user_lang(message),
+                                                                 'message-resend-denied'))
 
 
 message_handler = MessageHandler()

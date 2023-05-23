@@ -17,6 +17,9 @@
 
   "stop-managing": "Managing of defined groups is stopped!",
 
+  "message-resend-successful": "Message have been successfully resend. :)",
+  "message-resend-denied": "Message haven't been resend. :(",
+
   "all-groups": "Your groups is:\n\n",
   "no-groups-added": "You have not added groups.\\n Add groups to start managing firstly.\\n\\n/how_to_add_group"
 }

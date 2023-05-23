@@ -93,7 +93,7 @@ class DataBase:
             cursor.execute(
                 """CREATE TABLE users(
                     id SERIAL PRIMARY KEY,
-                    user_tg_id VARCHAR(50) NOT NULL
+                    user_tg_id VARCHAR(50) NOT NULL,
                     lang VARCHAR(10) NOT NULL);"""
             )
 
@@ -122,11 +122,13 @@ class DataBase:
             )
 
     def get_user_lang(self, user_tg_id):
+        print(user_tg_id)
         with self._connection.cursor() as cursor:
             cursor.execute(
                 f"""SELECT lang FROM users
                     WHERE user_tg_id = '{user_tg_id}';"""
             )
+            print(cursor.fetchone())
             return cursor.fetchone[0]
 
     # get list of all users
@@ -166,6 +168,16 @@ class DataBase:
                     WHERE user_id = '{user_id}';"""
             )
             return cursor.fetchall()
+
+    # get group id by the tag
+    @staticmethod
+    def get_group_id(tag, user_id):
+        database.set_data_base_connection()
+        all_groups = database.get_user_groups(user_id)
+        database.end_connection()
+        for group in all_groups:
+            if group[1] == tag:
+                return group[0]
 
     # delete some group by tag from table
     def delete_group(self, user_id, tag):

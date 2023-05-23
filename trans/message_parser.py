@@ -33,7 +33,7 @@ class MessageParser:
         with open("trans/english_messages.json", 'r') as json_file:
             self._english_messages = json.loads(json_file.read())
 
-        with open("ukrainian_messages.json", 'r') as json_file:
+        with open("trans/ukrainian_messages.json", 'r') as json_file:
             self._ukrainian_messages = json.loads(json_file.read())
 
     def message(self, message_name, lang):

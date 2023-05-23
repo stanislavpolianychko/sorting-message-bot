@@ -74,18 +74,12 @@ class CommandHandler:
         # if tg_link and tag is not possible to get (is none)
         if not tup:
             await message.reply(message_parser.message('add-group-denied', validator.get_user_lang(message)))
-                                # +
-                                # "\nNot correct format of 'add group command'" +
-                                # "\n\nUse: /how_to_add_group")  # not added
             return
 
         tg_link, tag = tup
         # if this group is already in database
         if validator.group_in_db(user_id, tg_link, tag):
             await message.reply(message_parser.message('add-group-denied', validator.get_user_lang(message)))
-                                #     +
-                                # f"\nSome group with tag '{tag}' or link '{tg_link}'" +
-                                # f" already in your groups.")
             return
 
         database.set_data_base_connection()
